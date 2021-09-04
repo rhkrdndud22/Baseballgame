@@ -13,53 +13,257 @@ namespace WinFormsApp2
 {
     public partial class Form1 : Form
     {
+        Random rs = new Random();
         public Form1()
         {
             InitializeComponent();
 
 
+            counttimer();
+            MathRandom();
+
+        }
+
+        int duration = 0;
+        ArrayList array = new ArrayList();
+        ArrayList array2 = new ArrayList();
+
+        string arr = "";
+
+        private void MathRandom()
+        {
+
+            do
+            {
+
+
+
+
+                int com = rs.Next(10);
+
+                int indexvalue = arr.IndexOf(com.ToString());
+
+                if (indexvalue == -1)
+                {
+                    arr += com;
+                    array.Add(com);
+                }
+
+
+            } while (array.Count < 3);
+
+
+
+
+        }
+
+
+        private void Shuffle()
+        {
+
+            
+            count = 0;
+            textBox1.Text = "";
+            arr = "";
+            duration = 0;
+            answerB.Text = "정답은";
+
+            nbtn0.Enabled = true;
+            nBtn1.Enabled = true;
+            nBtn2.Enabled = true;
+            nBtn3.Enabled = true;
+            nBtn4.Enabled = true;
+            nBtn5.Enabled = true;
+            nBtn6.Enabled = true;
+            nBtn7.Enabled = true;
+            nBtn8.Enabled = true;
+            nBtn9.Enabled = true;
+            listBox1.Items.Clear();
+            do
+            {
+
+
+
+
+                int com = rs.Next(10);
+
+                int indexvalue = arr.IndexOf(com.ToString());
+
+                if (indexvalue == -1)
+                {
+
+                    arr += com;
+                    array2.Add(com);
+
+                }
+
+
+            } while (array2.Count < 3);
+        }
+
+        private void counttimer()
+        {
             timer1 = new System.Windows.Forms.Timer();
             timer1.Tick += new EventHandler(count_down);
             timer1.Interval = 150;
             timer1.Start();
             textBox1.MaxLength = 3;
         }
-
-        int duration = 0;
-
         private void count_down(object sender, EventArgs e)
         {
 
             if (duration == 2000)
             {
                 timer1.Stop();
+                MessageBox.Show("Game over");
 
             }
+
+
             else
             {
                 duration++;
                 label1.Text = duration.ToString();
+
             }
         }
-        private bool _isProcessing;
+
         private void button1_Click(object sender, EventArgs e)
         {
             textBox1.Text += "1";
             nBtn1.Enabled = false;
         }
-        
 
+        int count = 0;
         private void subB_Click(object sender, EventArgs e)
         {
-            
-            timer1.Stop();
+
+
+            if (textBox1.Text.Length > 3)
+            {
+                MessageBox.Show("3개만 입력해주세요");
+                textBox1.Text = "";
+                return;
+            }
+
+
+            if (arr == textBox1.Text)
+            {
+                MessageBox.Show("정답을 맞혔습니다");
+                Shuffle();
+
+            }
+
+            else if (textBox1.Text == "" || textBox1.Text.Length<3)
+            {
+                MessageBox.Show("값을 제대로 적어 주세요");
+                return;
+
+            }
+
+            else
+            {
+
+                
+                count++;
+                char[] aor;
+                aor = new char[] { arr[0], arr[1], arr[2] };
+
+                int strike = 0;
+                int ball = 0;
+
+                nbtn0.Enabled = true;
+                nBtn1.Enabled = true;
+                nBtn2.Enabled = true;
+                nBtn3.Enabled = true;
+                nBtn4.Enabled = true;
+                nBtn5.Enabled = true;
+                nBtn6.Enabled = true;
+                nBtn7.Enabled = true;
+                nBtn8.Enabled = true;
+                nBtn9.Enabled = true;
+                for (int j = 0; j < textBox1.Text.Length; j++)
+                {
+                    int num = Array.IndexOf(aor, textBox1.Text[j]);
+                    if (num != -1)
+                    {
+                        if (arr[j] == textBox1.Text[j])
+                        {
+                            strike++;
+                        }
+                        else
+                        {
+
+                            ball++;
+                        }
+                    }
+
+
+                }
+
+                if (ball == 0 && strike == 0)
+                {
+
+                    MessageBox.Show("OUT");
+
+                    nbtn0.Enabled = true;
+                    nBtn1.Enabled = true;
+                    nBtn2.Enabled = true;
+                    nBtn3.Enabled = true;
+                    nBtn4.Enabled = true;
+                    nBtn5.Enabled = true;
+                    nBtn6.Enabled = true;
+                    nBtn7.Enabled = true;
+                    nBtn8.Enabled = true;
+                    nBtn9.Enabled = true;
+
+                }
+
+                MessageBox.Show("오답입니다." + "\n" + "스트라이크:" + strike + "\n" + "볼:" + ball);
+                listBox1.Items.Add("[" + textBox1.Text + "]" + strike + "S" + ball + "B");
+                textBox1.Text = "";
+
+
+
+                if (count >= 3)
+                {
+                    nbtn0.Hide();
+
+
+
+                    if (count >= 5)
+                    {
+                        nBtn1.Hide();
+                        if (count >= 7)
+                        {
+                            nBtn2.Hide();
+                            if (count >= 8)
+                            {
+                                nBtn3.Hide();
+                                if (count == 9)
+                                {
+                                    MessageBox.Show("Game  Over"+"\n"+"정답은"+arr+"였습니다.");
+
+                                    Shuffle();
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            /*int a= (int)array[0];
+            int b=(int)
+            MessageBox.Show(a.ToString());*/
+
         }
+
 
         private void nBtn2_Click(object sender, EventArgs e)
         {
-            
+
             textBox1.Text += "2";
-            nBtn1.Enabled = false;
+            nBtn2.Enabled = false;
         }
         private void nBtn3_Click(object sender, EventArgs e)
         {
@@ -101,6 +305,7 @@ namespace WinFormsApp2
         private void cancelB_Click(object sender, EventArgs e)
         {
             textBox1.Text = "";
+            nbtn0.Enabled = true;
             nBtn1.Enabled = true;
             nBtn2.Enabled = true;
             nBtn3.Enabled = true;
@@ -109,13 +314,27 @@ namespace WinFormsApp2
             nBtn6.Enabled = true;
             nBtn7.Enabled = true;
             nBtn8.Enabled = true;
-           
+            nBtn9.Enabled = true;
+
 
         }
 
-        private void n(object sender, EventArgs e)
+        private void answerB_Click(object sender, EventArgs e)
         {
+            array2.Clear();
+            answerB.Text = "정답은" + arr;
+        }
 
+        private void nBtn0_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += "0";
+            nbtn0.Enabled = false;
+        }
+
+        private void nBtn9_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += "9";
+            nBtn9.Enabled = false;
         }
     }
 }
