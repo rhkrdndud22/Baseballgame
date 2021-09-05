@@ -42,6 +42,9 @@ namespace WinFormsApp2
             this.subB = new System.Windows.Forms.Button();
             this.answerB = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.nbtn0 = new System.Windows.Forms.Button();
+            this.nBtn9 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -59,7 +62,7 @@ namespace WinFormsApp2
             this.nBtn1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
             this.nBtn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.nBtn1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nBtn1.Location = new System.Drawing.Point(31, 124);
+            this.nBtn1.Location = new System.Drawing.Point(119, 116);
             this.nBtn1.Name = "nBtn1";
             this.nBtn1.Size = new System.Drawing.Size(48, 39);
             this.nBtn1.TabIndex = 0;
@@ -78,7 +81,7 @@ namespace WinFormsApp2
             this.nBtn2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
             this.nBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.nBtn2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nBtn2.Location = new System.Drawing.Point(119, 124);
+            this.nBtn2.Location = new System.Drawing.Point(213, 116);
             this.nBtn2.Name = "nBtn2";
             this.nBtn2.Size = new System.Drawing.Size(48, 39);
             this.nBtn2.TabIndex = 1;
@@ -97,7 +100,7 @@ namespace WinFormsApp2
             this.nBtn3.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
             this.nBtn3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.nBtn3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nBtn3.Location = new System.Drawing.Point(213, 124);
+            this.nBtn3.Location = new System.Drawing.Point(307, 116);
             this.nBtn3.Name = "nBtn3";
             this.nBtn3.Size = new System.Drawing.Size(48, 39);
             this.nBtn3.TabIndex = 2;
@@ -116,7 +119,7 @@ namespace WinFormsApp2
             this.nBtn4.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
             this.nBtn4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.nBtn4.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nBtn4.Location = new System.Drawing.Point(307, 124);
+            this.nBtn4.Location = new System.Drawing.Point(388, 116);
             this.nBtn4.Name = "nBtn4";
             this.nBtn4.Size = new System.Drawing.Size(48, 39);
             this.nBtn4.TabIndex = 3;
@@ -135,7 +138,7 @@ namespace WinFormsApp2
             this.nBtn5.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
             this.nBtn5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.nBtn5.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nBtn5.Location = new System.Drawing.Point(31, 173);
+            this.nBtn5.Location = new System.Drawing.Point(32, 173);
             this.nBtn5.Name = "nBtn5";
             this.nBtn5.Size = new System.Drawing.Size(48, 39);
             this.nBtn5.TabIndex = 4;
@@ -222,7 +225,7 @@ namespace WinFormsApp2
             this.subB.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.subB.FlatAppearance.BorderSize = 10;
             this.subB.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.subB.Location = new System.Drawing.Point(167, 231);
+            this.subB.Location = new System.Drawing.Point(171, 231);
             this.subB.Name = "subB";
             this.subB.Size = new System.Drawing.Size(107, 39);
             this.subB.TabIndex = 9;
@@ -243,11 +246,15 @@ namespace WinFormsApp2
             this.answerB.TabIndex = 10;
             this.answerB.Text = "정답은";
             this.answerB.UseVisualStyleBackColor = false;
+            this.answerB.Click += new System.EventHandler(this.answerB_Click);
             // 
             // panel1
             // 
             this.panel1.BackgroundImage = global::WinFormsApp2.Properties.Resources.adf;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.listBox1);
+            this.panel1.Controls.Add(this.nbtn0);
+            this.panel1.Controls.Add(this.nBtn9);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.nBtn7);
@@ -267,10 +274,58 @@ namespace WinFormsApp2
             this.panel1.Size = new System.Drawing.Size(484, 411);
             this.panel1.TabIndex = 14;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(222, 12);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 94);
+            this.listBox1.TabIndex = 18;
+            // 
+            // nbtn0
+            // 
+            this.nbtn0.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.nbtn0.BackgroundImage = global::WinFormsApp2.Properties.Resources._base;
+            this.nbtn0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.nbtn0.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.nbtn0.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.nbtn0.FlatAppearance.BorderSize = 0;
+            this.nbtn0.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.nbtn0.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.nbtn0.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.nbtn0.Location = new System.Drawing.Point(32, 116);
+            this.nbtn0.Name = "nbtn0";
+            this.nbtn0.Size = new System.Drawing.Size(48, 39);
+            this.nbtn0.TabIndex = 17;
+            this.nbtn0.Text = "0";
+            this.nbtn0.UseVisualStyleBackColor = false;
+            this.nbtn0.Click += new System.EventHandler(this.nBtn0_Click);
+            // 
+            // nBtn9
+            // 
+            this.nBtn9.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.nBtn9.BackgroundImage = global::WinFormsApp2.Properties.Resources._base;
+            this.nBtn9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.nBtn9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.nBtn9.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.nBtn9.FlatAppearance.BorderSize = 0;
+            this.nBtn9.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.nBtn9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.nBtn9.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.nBtn9.Location = new System.Drawing.Point(388, 173);
+            this.nBtn9.Name = "nBtn9";
+            this.nBtn9.Size = new System.Drawing.Size(48, 39);
+            this.nBtn9.TabIndex = 16;
+            this.nBtn9.Text = "9";
+            this.nBtn9.UseVisualStyleBackColor = false;
+            this.nBtn9.Click += new System.EventHandler(this.nBtn9_Click);
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(101, 59);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(100, 23);
             this.textBox1.TabIndex = 15;
             // 
@@ -322,6 +377,9 @@ namespace WinFormsApp2
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button nbtn0;
+        private System.Windows.Forms.Button nBtn9;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
