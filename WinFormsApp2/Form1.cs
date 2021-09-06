@@ -21,7 +21,7 @@ namespace WinFormsApp2
 
             counttimer();
             MathRandom();
-
+           
         }
 
         int duration = 0;
@@ -146,7 +146,7 @@ namespace WinFormsApp2
                 return;
             }
 
-
+            count++;
             if (arr == textBox1.Text)
             {
                 MessageBox.Show("정답을 맞혔습니다");
@@ -165,7 +165,7 @@ namespace WinFormsApp2
             {
 
                 
-                count++;
+                
                 char[] aor;
                 aor = new char[] { arr[0], arr[1], arr[2] };
 
@@ -222,35 +222,102 @@ namespace WinFormsApp2
                 MessageBox.Show("오답입니다." + "\n" + "스트라이크:" + strike + "\n" + "볼:" + ball);
                 listBox1.Items.Add("[" + textBox1.Text + "]" + strike + "S" + ball + "B");
                 textBox1.Text = "";
+                Button[] btn = new Button[] { nbtn0, nBtn1, nBtn2, nBtn3, nBtn4, nBtn5, nBtn6, nBtn7, nBtn8, nBtn9 };
+              
 
 
 
-                if (count >= 3)
+
+                if (count == 3)
                 {
-                    nbtn0.Hide();
+                    int checkNum = rs.Next(10);
+                    
+                    string[] aor1 = new string[] { arr[0].ToString(), arr[1].ToString(),arr[2].ToString() };
 
+                    int detect = Array.IndexOf(aor1,checkNum.ToString());
 
-
-                    if (count >= 5)
+                    
+                    while (detect != -1)
                     {
-                        nBtn1.Hide();
-                        if (count >= 7)
-                        {
-                            nBtn2.Hide();
-                            if (count >= 8)
-                            {
-                                nBtn3.Hide();
-                                if (count == 9)
-                                {
-                                    MessageBox.Show("Game  Over"+"\n"+"정답은"+arr+"였습니다.");
 
-                                    Shuffle();
+                        checkNum = rs.Next(10);
+                        detect = Array.IndexOf(aor, checkNum+"");
 
-                                }
-                            }
-                        }
                     }
+
+                    
+                    btn[checkNum].Visible = false;
                 }
+                else if (count == 5)
+                {
+                    int checkNum = rs.Next(10);
+
+                    string[] aor1 = new string[] { arr[0].ToString(), arr[1].ToString(), arr[2].ToString() };
+
+                    int detect = Array.IndexOf(aor1, checkNum.ToString());
+
+
+                    while (detect != -1)
+                    {
+
+                        checkNum = rs.Next(10);
+                        detect = Array.IndexOf(aor, checkNum + "");
+
+                    }
+
+
+                    btn[checkNum].Visible = false;
+
+                }
+                else if (count == 7)
+                {
+                    int checkNum = rs.Next(10);
+
+                    string[] aor1 = new string[] { arr[0].ToString(), arr[1].ToString(), arr[2].ToString() };
+
+                    int detect = Array.IndexOf(aor1, checkNum.ToString());
+
+
+                    while (detect != -1)
+                    {
+
+                        checkNum = rs.Next(10);
+                        detect = Array.IndexOf(aor, checkNum + "");
+
+                    }
+
+
+                    btn[checkNum].Visible = false;
+
+                }
+                else if (count == 8)
+                {
+                    int checkNum = rs.Next(10);
+
+                    string[] aor1 = new string[] { arr[0].ToString(), arr[1].ToString(), arr[2].ToString() };
+
+                    int detect = Array.IndexOf(aor1, checkNum.ToString());
+
+
+                    while (detect != -1)
+                    {
+
+                        checkNum = rs.Next(10);
+                        detect = Array.IndexOf(aor, checkNum + "");
+
+                    }
+
+
+                    btn[checkNum].Visible = false;
+
+                }
+
+                if (count >= 9)
+                {
+                    MessageBox.Show("Game over"+"\n"+"정답은"+arr+"입니다");
+                    Shuffle();
+                }
+               
             }
             /*int a= (int)array[0];
             int b=(int)
